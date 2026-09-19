@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MauiAppTempoAgora.Models
+﻿namespace MauiAppTempoAgora.Models
 {
     public class Tempo
     {
@@ -16,5 +12,6 @@ namespace MauiAppTempoAgora.Models
         public string? main { get; set; }
         public string? description { get; set; }
         public double? speed { get; set; }
+        public int? cod { get; set; }
     }
 }
