@@ -1,6 +1,5 @@
 ﻿using MauiAppTempoAgora.Models;
 using Newtonsoft.Json.Linq;
-using System.Net;
 
 namespace MauiAppTempoAgora.Services
 {
@@ -17,6 +16,14 @@ namespace MauiAppTempoAgora.Services
             using (HttpClient httpClient = new HttpClient())
             {
                 HttpResponseMessage response = await httpClient.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    t = new()
+                    {
+                        cod = (int)response.StatusCode
+                    };
+                }
 
                 string json = await response.Content.ReadAsStringAsync();
 
@@ -44,13 +51,7 @@ namespace MauiAppTempoAgora.Services
                     };
                 }
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    t = new()
-                    {
-                        cod = (int)response.StatusCode
-                    };
-                }
+                
             }
 
             return t;
